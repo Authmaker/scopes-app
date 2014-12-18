@@ -1,0 +1,68 @@
+<div class="frame">
+  <div class="account-nav">
+    <ul class="nav-tabs nav-justified text-center">
+      <li class="active">
+        <span>
+          <i class="fa fa-list"></i>
+          <h4>Step 1</h4>
+          <p>Plans</p>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="fa fa-lock"></i>
+          <h4>Step 2</h4>
+          <p>Auth</p>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="fa fa-shopping-cart"></i>
+          <h4>Step 3</h4>
+          <p>Checkout</p>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="fa fa-credit-card"></i>
+          <h4>Step 4</h4>
+          <p>Payment</p>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="boxed-inner step-plans">
+    <div class="boxed-title">
+      <h1>Select your plan</h1>
+      <p>Please select a plan to subscribe to.</p>
+    </div>
+    <div class="boxed-content">
+      <table class="table scope-list">
+        <thead>
+          <tr>
+            <th>Plan Name</th>
+            <th>Plan Price</th>
+            <th>Plan Scopes</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each content}}
+          <tr>
+            <td><h4>{{name}}</h4></td>
+            <td><h4>${{price}}</h4></td>
+            <td>
+              <ul class="permissions-list">
+                {{#each permissions}}
+                <li><h4>{{name}}</h4></li>
+                {{/each}}
+              </ul>
+            </td>
+            <td>{{#link-to 'plan.auth' this class="btn btn-primary"}}Select{{/link-to}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
