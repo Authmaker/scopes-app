@@ -1,0 +1,18 @@
+<div {{bind-attr class=":modal :fade hasBeenInserted:in"}}>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="section-controls">
+          <div class="section-action close">
+            {{#unless disableClose}}
+            <span {{action 'close'}}><i class="fa fa-times-circle"></i></span>
+            {{/unless}}
+          </div>
+        </div>
+        <p class="header-title">{{title}}</p>
+      </div>
+      {{yield}}
+    </div>
+  </div>
+</div>
+<div {{bind-attr class=":modal-backdrop :fade hasBeenInserted:in"}}></div>
