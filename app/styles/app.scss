@@ -12,17 +12,9 @@
 @import "components";
 @import "scaffolding";
 
-body {
-  background: #f5f7f9;
-}
 
+// App partials
+// -------------------------
 
-.frame {
-  background: #fff;
-  border-radius: $border-radius-base;
-  border: {
-    width: 1px;
-    style: solid;
-    color: #e5e6e9 #dfe0e4 #d0d1d5;
-  }
-}
+// Import OAuth specific rules
+@import "oauth";
