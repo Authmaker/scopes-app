@@ -1,13 +1,13 @@
 <div class="frame">
   <div class="oauth-scopes-nav">
     <ul class="nav-tabs nav-justified text-center">
-      <li class="active">
-        <span>
-          <i class="fa fa-list fa-2x"></i>
+      <li class="complete">
+        {{#link-to "plans"}}
+          <i class="fa fa-check fa-2x"></i>
           <h4 class="spacing-bottom0">Plans</h4>
-        </span>
+        {{/link-to}}
       </li>
-      <li>
+      <li class="active">
         <span>
           <i class="fa fa-lock fa-2x"></i>
           <h4 class="spacing-bottom0">Auth</h4>
@@ -29,36 +29,33 @@
   </div>
   <div class="pad4">
     <div class="spacing-bottom4 text-center">
-      <h2>Select your plan</h2>
-      <p>Please select a plan to subscribe to.</p>
+      <h2>Allow {{oauthClient.name}} access</h2>
+      <p>{{oauthClient.name}} would like access to the following features of your Blooie account:</p>
     </div>
     <div class="scope-content">
       <table class="table">
         <thead>
           <tr>
-            <th>Plan Name</th>
-            <th>Plan Price</th>
-            <th>Plan Scopes</th>
-            <th></th>
+            <th>Permission</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          {{#each content}}
+          {{#each content.permissions}}
           <tr>
             <td><h4>{{name}}</h4></td>
-            <td><h4>${{price}}</h4></td>
-            <td>
-              <ul>
-                {{#each permissions}}
-                <li><h4>{{name}}</h4></li>
-                {{/each}}
-              </ul>
-            </td>
-            <td>{{#link-to 'plan.auth' this class="btn green small"}}Select{{/link-to}}</td>
+            <td><h4>{{description}}</h4></td>
           </tr>
           {{/each}}
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="frame-footer">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-8">
+        <button class="btn green large block" {{action 'acceptPermissions'}}>Allow</button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,88 @@
+<div class="frame">
+  <div class="oauth-scopes-nav">
+    <ul class="nav-tabs nav-justified text-center">
+      <li class="complete">
+        {{#link-to "plans"}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Plans</h4>
+        {{/link-to}}
+      </li>
+      <li class="complete">
+        {{#link-to "auth"}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Auth</h4>
+        {{/link-to}}
+      </li>
+      <li class="active">
+        <span>
+          <i class="fa fa-shopping-cart fa-2x"></i>
+          <h4 class="spacing-bottom0">Cart</h4>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="fa fa-credit-card fa-2x"></i>
+          <h4 class="spacing-bottom0">Payment</h4>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="pad4">
+    <div class="spacing-bottom4 text-center">
+      <h2>Confirm paid features</h2>
+      <p>You will be charged for the following features:</p>
+    </div>
+    <div class="boxed-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each content.permissions}}
+          <tr>
+            <td><h4><strong>{{name}}</strong></h4></td>
+            <td><h4>{{description}}</h4></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div class="scope-pricing">
+        <div class="row">
+          <div class="scope-coupon col-sm-4 spacing-bottom4">
+            <p><strong>Coupon code</strong></p>
+            <div class="spacing-bottom1">
+              {{input class="form-control input-sm" value=couponCode action="applyCode"}}
+            </div>
+            <div class="alertbox"></div>
+            <button class="btn blue" {{action applyCode}}>Apply</button>
+          </div>
+          <div class="scope-total col-sm-6 col-sm-offset-2">
+            <p><strong>Price</strong></p>
+            <div {{bind-attr class="hasReducedPrice:scope-reducedprice:hidden"}}>
+              {{#if hasReducedPrice}}
+              {{!-- <p class="alert alert-info">For <strong>{{ reducedDuration }}</strong> your payment will be: <strong>${{ formattedPrice reducedPrice}}</strong></p> --}}
+              {{else}}
+              <p class="alert alert-info">For <strong>{{reducedDuration}}</strong> you will have <strong>free access</strong></p>
+              {{/if}}
+            </div>
+            <div class="scope-regularprice">
+              <p {{bind-attr class="hasReducedPrice:shown:hidden"}}>After that it will be:</p>
+              {{!-- <h3>${{formattedPrice content.price}}</h3> --}}
+              {{!-- <small>{{formattedTimePeriod content.interval}}</small> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-footer">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-8">
+        <button class="btn green large block" {{action 'payForPlan'}}>Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

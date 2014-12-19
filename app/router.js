@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
     this.route('auth');
-    this.route('checkout');
+    this.route('cart');
     this.route('payment');
     this.route('plans');
 });

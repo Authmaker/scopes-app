@@ -1,0 +1,80 @@
+<div class="frame">
+  <div class="oauth-scopes-nav">
+    <ul class="nav-tabs nav-justified text-center">
+      <li class="complete">
+        {{#link-to "plans"}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Plans</h4>
+        {{/link-to}}
+      </li>
+      <li class="complete">
+        {{#link-to "auth"}}
+        <i class="fa fa-check fa-2x"></i>
+        <h4 class="spacing-bottom0">Auth</h4>
+        {{/link-to}}
+      </li>
+      <li class="complete">
+        {{#link-to "cart"}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Cart</h4>
+        {{/link-to}}
+      </li>
+      <li class="active">
+        <span>
+          <i class="fa fa-credit-card fa-2x"></i>
+          <h4 class="spacing-bottom0">Payment</h4>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="pad4">
+    <div class="spacing-bottom-4 text-center">
+      <h2>Enter your payment details</h2>
+      <p>Please enter your payment details below.</p>
+    </div>
+    <div class="scope-content">
+      <div class="spacing-bottom4">
+        <div class="cardnumber form-group">
+          <label>Card number</label>
+          {{input size=20 value=number class="form-control input-lg" placeholder="1234567812345678"}}
+        </div>
+        <div class="cardetails form-group">
+          <div class="row">
+            <div class="cvc col-xs-4 col-sm-6">
+              <label>CVC</label>
+              {{input size=4 value=cvc class="form-control input-lg" placeholder="123"}}
+            </div>
+            <div class="expiry col-xs-8 col-sm-6">
+              <label>Expiration (MM/YYYY)</label>
+              <div class="row">
+                <div class="month col-xs-5">
+                  {{input size=2 value=expMonth class="form-control input-lg" placeholder="01"}}
+                </div>
+                <div class="year col-xs-7">
+                  {{input size=4 value=expYear class="form-control input-lg" placeholder="2015"}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alertbox form-group"></div>
+      <span class="payment-errors"></span>
+      <div class="alert alert-info text-small">
+        <div class="checkbox spacing0">
+          <label>
+            {{view Ember.Checkbox checkedBinding="terms"}}
+            I have read and accept the <a class="alert-link" href="https://bloo.ie/privacy" target="_blank">privacy statement</a>.
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-footer">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-8">
+        <button class="btn green large block" {{action submit}}>Submit payment</button>
+      </div>
+    </div>
+  </div>
+</div>
