@@ -52,12 +52,16 @@
       <div class="scope-pricing">
         <div class="row">
           <div class="scope-coupon col-sm-4 spacing-bottom4">
-            <p><strong>Coupon code</strong></p>
-            <div class="spacing-bottom1">
-              {{input class="form-control input-sm" value=couponCode action="applyCode"}}
+            <div class="form-group">
+              <label>Coupon code</label>
+              <div class="input-group">
+                {{input class="form-control small" value=couponCode action="applyCode"}}
+                <span class="input-group-btn">
+                  <button class="btn blue small" {{action applyCode}}>Apply</button>
+                </span>
+              </div>
             </div>
             <div class="alertbox"></div>
-            <button class="btn blue" {{action applyCode}}>Apply</button>
           </div>
           <div class="scope-total col-sm-6 col-sm-offset-2">
             <p><strong>Price</strong></p>
@@ -81,7 +85,7 @@
   <div class="frame-footer">
     <div class="row">
       <div class="col-sm-4 col-sm-offset-8">
-        <button class="btn green large block" {{action 'payForPlan'}}>Confirm</button>
+        <button class="btn green block" {{action 'payForPlan'}}>Confirm</button>
       </div>
     </div>
   </div>
