@@ -1,16 +1,16 @@
 {
-  "name": "oauthscopesapp",
-  "version": "0.0.0",
-  "description": "Small description for oauthscopesapp goes here",
-  "private": true,
+  "name": "authmaker-scope-app",
+  "version": "0.0.1",
+  "description": "Scopes app for authmaker",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "build": "ember build",
+    "test": "ember test",
+    "prepublish": "rm -rf dist && npm run build -- --environment=production"
   },
   "repository": "",
   "engines": {
