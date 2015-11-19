@@ -9,3 +9,4 @@ tmp/
 bower.json
 testem.json
 Brocfile.js
+ember-cli-build.js
