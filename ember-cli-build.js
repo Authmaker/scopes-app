@@ -5,6 +5,13 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+    autoprefixer: {
+      browsers: ['last 2 versions', 'ie >= 8', 'bb 10', 'android 3'],
+      cascade: true
+    },
+    pixrem: {
+      rootvalue: "10px"
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
