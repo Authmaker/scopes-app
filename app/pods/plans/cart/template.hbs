@@ -50,7 +50,8 @@
           </div>
           <div class="scope-total col-sm-6 col-sm-offset-2">
             <p><strong>Price</strong></p>
-            <div {{bind-attr class="hasReducedPrice:scope-reducedprice:hidden"}}>
+
+            <div class="{{if hasReducedPrice 'scope-reducedprice' 'hidden'}}">
               {{#if hasReducedPrice}}
               {{!-- <p class="alert alert-info">For <strong>{{ reducedDuration }}</strong> your payment will be: <strong>${{ formattedPrice reducedPrice}}</strong></p> --}}
               {{else}}
@@ -58,7 +59,7 @@
               {{/if}}
             </div>
             <div class="scope-regularprice">
-              <p {{bind-attr class="hasReducedPrice:shown:hidden"}}>After that it will be:</p>
+              <p class="{{if hasReducedPrice 'shown' 'hidden'}}">After that it will be:</p>
               {{!-- <h3>${{formattedPrice content.price}}</h3> --}}
               {{!-- <small>{{formattedTimePeriod content.interval}}</small> --}}
             </div>

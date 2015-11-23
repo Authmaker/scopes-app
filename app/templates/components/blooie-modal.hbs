@@ -1,4 +1,5 @@
-<div {{bind-attr class=":modal :fade hasBeenInserted:in"}}>
+
+<div class=":modal :fade {{if hasBeenInserted 'in'}}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,4 +16,4 @@
     </div>
   </div>
 </div>
-<div {{bind-attr class=":modal-backdrop :fade hasBeenInserted:in"}}></div>
+<div class=":modal-backdrop :fade {{if hasBeenInserted 'in'}}"></div>
