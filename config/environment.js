@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'oauthscopesapp',
-    podModulePrefix: 'oauthscopesapp/pods',
+    modulePrefix: 'authmaker-scopes-app',
+    podModulePrefix: 'authmaker-scopes-app/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -17,7 +17,15 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'img-src': "'self' use.typekit.net data: ",
+      'connect-src': "'self' maps.gstatic.com ws://*:49155  http://*:49155",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' use.typekit.net",
+      'style-src': "'self' 'unsafe-inline' use.typekit.net"
+    },
   };
 
   if (environment === 'development') {
