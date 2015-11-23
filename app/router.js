@@ -8,9 +8,8 @@ const Router = Ember.Router.extend({
 Router.map(function() {
     this.route('authorize');
     this.route('plans', function(){
-      this.route('auth');
-      this.route('cart');
-      this.route('payment');
+      this.route('cart', {path: ':id'});
+      this.route('payment', {path: 'pay/:id'});
     });
 });
 

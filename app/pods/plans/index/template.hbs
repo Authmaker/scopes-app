@@ -9,12 +9,6 @@
       </li>
       <li>
         <span>
-          <i class="fa fa-lock fa-2x"></i>
-          <h4 class="spacing-bottom0">Auth</h4>
-        </span>
-      </li>
-      <li>
-        <span>
           <i class="fa fa-shopping-cart fa-2x"></i>
           <h4 class="spacing-bottom0">Cart</h4>
         </span>
@@ -43,18 +37,18 @@
           </tr>
         </thead>
         <tbody>
-          {{#each content as |cont|}}
+          {{#each model as |plan|}}
           <tr>
-            <td><h4>{{cont.name}}</h4></td>
-            <td><h4>${{cont.price}}</h4></td>
+            <td><h4>{{plan.name}}</h4></td>
+            <td><h4>${{plan.price}}</h4></td>
             <td>
               <ul>
-                {{#each cont.permissions as |permission|}}
-                <li><h4>{{permission.name}}</h4></li>
+                {{#each plan.scopes as |scope|}}
+                <li><h4>{{scope.name}}</h4></li>
                 {{/each}}
               </ul>
             </td>
-            <td>{{#link-to 'cont.plan.auth' this class="btn green small"}}Select{{/link-to}}</td>
+            <td>{{#link-to "plans.cart" plan class="btn green small"}}Select{{/link-to}}</td>
           </tr>
           {{/each}}
         </tbody>

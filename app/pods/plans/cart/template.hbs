@@ -7,12 +7,6 @@
           <h4 class="spacing-bottom0">Plans</h4>
         {{/link-to}}
       </li>
-      <li class="complete">
-        {{#link-to "auth"}}
-          <i class="fa fa-check fa-2x"></i>
-          <h4 class="spacing-bottom0">Auth</h4>
-        {{/link-to}}
-      </li>
       <li class="active">
         <span>
           <i class="fa fa-shopping-cart fa-2x"></i>
@@ -41,10 +35,10 @@
           </tr>
         </thead>
         <tbody>
-          {{#each content.permissions as |permission|}}
+          {{#each content.scopes as |scope|}}
           <tr>
-            <td><h4><strong>{{permission.name}}</strong></h4></td>
-            <td><h4>{{permission.description}}</h4></td>
+            <td><h4><strong>{{scope.name}}</strong></h4></td>
+            <td><h4>{{scope.description}}</h4></td>
           </tr>
           {{/each}}
         </tbody>
@@ -52,16 +46,7 @@
       <div class="scope-pricing">
         <div class="row">
           <div class="scope-coupon col-sm-4 spacing-bottom4">
-            <div class="form-group">
-              <label>Coupon code</label>
-              <div class="input-group">
-                {{input class="form-control small" value=couponCode action="applyCode"}}
-                <span class="input-group-btn">
-                  <button class="btn blue small" {{action applyCode}}>Apply</button>
-                </span>
-              </div>
-            </div>
-            <div class="alertbox"></div>
+
           </div>
           <div class="scope-total col-sm-6 col-sm-offset-2">
             <p><strong>Price</strong></p>
@@ -85,7 +70,7 @@
   <div class="frame-footer">
     <div class="row">
       <div class="col-sm-4 col-sm-offset-8">
-        <button class="btn green block" {{action 'payForPlan'}}>Confirm</button>
+        <button class="btn green block" {{action 'transitionTo' 'plans.payment' model}}>Confirm</button>
       </div>
     </div>
   </div>
