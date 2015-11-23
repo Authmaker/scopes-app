@@ -43,18 +43,18 @@
           </tr>
         </thead>
         <tbody>
-          {{#each content}}
+          {{#each content as |cont|}}
           <tr>
-            <td><h4>{{name}}</h4></td>
-            <td><h4>${{price}}</h4></td>
+            <td><h4>{{cont.name}}</h4></td>
+            <td><h4>${{cont.price}}</h4></td>
             <td>
               <ul>
-                {{#each permissions}}
-                <li><h4>{{name}}</h4></li>
+                {{#each cont.permissions as |permission|}}
+                <li><h4>{{permission.name}}</h4></li>
                 {{/each}}
               </ul>
             </td>
-            <td>{{#link-to 'plan.auth' this class="btn green small"}}Select{{/link-to}}</td>
+            <td>{{#link-to 'cont.plan.auth' this class="btn green small"}}Select{{/link-to}}</td>
           </tr>
           {{/each}}
         </tbody>

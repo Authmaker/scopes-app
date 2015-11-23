@@ -41,10 +41,10 @@
           </tr>
         </thead>
         <tbody>
-          {{#each content.permissions}}
+          {{#each content.permissions as |permission|}}
           <tr>
-            <td><h4>{{name}}</h4></td>
-            <td><h4>{{description}}</h4></td>
+            <td><h4>{{permission.name}}</h4></td>
+            <td><h4>{{permission.description}}</h4></td>
           </tr>
           {{/each}}
         </tbody>
