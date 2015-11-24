@@ -8,7 +8,7 @@
         {{/link-to}}
       </li>
       <li class="complete">
-        {{#link-to "plans.cart" model}}
+        {{#link-to "plans.cart" model.plan}}
           <i class="fa fa-check fa-2x"></i>
           <h4 class="spacing-bottom0">Cart</h4>
         {{/link-to}}
@@ -26,13 +26,17 @@
       <h2>Complete your payment!</h2>
     </div>
     <div class="scope-content">
+      {{#each model.cards as |card|}}
+        {{log card}}
+        
+      {{/each}}
       {{stripe-checkout
         class="btn btn-primary"
         image="/logo.svg"
         name="AuthMaker"
-        description=model.stripePlan.name
-        amount=model.stripePlan.amount
-        currency=model.stripePlan.currency
+        description=model.plan.stripePlan.name
+        amount=model.plan.stripePlan.amount
+        currency=model.plan.stripePlan.currency
         label="Subscribe now"
         panelLabel="Subscribe & Pay"
         isDisabled=payButtonDisabled
