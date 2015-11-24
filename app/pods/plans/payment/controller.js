@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
         dataType: 'json',
         url: `/api/stripePlans/subscribe`,
         data: {
-          planId: "123_plan_id",
+          planId: this.get('model.plan.stripePlan.id'),
           token: token
         },
       }).then(() => {
