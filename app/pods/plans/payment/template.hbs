@@ -23,35 +23,20 @@
   </div>
   <div class="pad4">
     <div class="spacing-bottom-4 text-center">
-      <h2>Enter your payment details</h2>
-      <p>Please enter your payment details below.</p>
+      <h2>Complete your payment!</h2>
     </div>
     <div class="scope-content">
-      <div class="spacing-bottom4">
-        <div class="cardnumber form-group">
-          <label>Card number</label>
-          {{input size=20 value=number class="form-control input-lg" placeholder="1234567812345678"}}
-        </div>
-        <div class="cardetails form-group">
-          <div class="row">
-            <div class="cvc col-xs-4 col-sm-6">
-              <label>CVC</label>
-              {{input size=4 value=cvc class="form-control input-lg" placeholder="123"}}
-            </div>
-            <div class="expiry col-xs-8 col-sm-6">
-              <label>Expiration (MM/YYYY)</label>
-              <div class="row">
-                <div class="month col-xs-5">
-                  {{input size=2 value=expMonth class="form-control input-lg" placeholder="01"}}
-                </div>
-                <div class="year col-xs-7">
-                  {{input size=4 value=expYear class="form-control input-lg" placeholder="2015"}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{stripe-checkout
+        class="btn btn-primary"
+        image="/logo.svg"
+        name="AuthMaker"
+        description="{{model.stripePlan.name}}"
+        amount="{{model.stripePlan.amount}}"
+        label="Subscribe now"
+        panelLabel="Subscribe for {{model.stripePlan.amount}}/mo"
+        isDisabled=payButtonDisabled
+        action="processStripeToken"
+      }}
       <div class="alertbox form-group"></div>
       <span class="payment-errors"></span>
       <div class="alert alert-info text-small">
@@ -61,13 +46,6 @@
             I have read and accept the <a class="alert-link" href="" target="_blank">privacy statement</a>.
           </label>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="frame-footer">
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-8">
-        <button class="btn green block" {{action 'submit'}}>Submit payment</button>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@
           {{#each model as |plan|}}
           <tr>
             <td><h4>{{plan.name}}</h4></td>
-            <td><h4>${{plan.price}}</h4></td>
+            <td><h4><i class="fa fa-{{plan.stripePlan.currency}}"></i>{{plan.stripePlan.amount}}</h4></td>
             <td>
               <ul>
                 {{#each plan.scopes as |scope|}}

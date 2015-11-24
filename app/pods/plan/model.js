@@ -2,14 +2,14 @@ import DS from 'ember-data';
 
 var attr = DS.attr;
 
-var plan = DS.Model.extend({
+export default DS.Model.extend({
   name: attr('string'),
-  stripePlan: attr('string'),
   newSubscriptions: attr('boolean'),
+  stripePlan: DS.belongsTo('stripe-plan', {
+    async: true
+  }),
   scopes: DS.hasMany('scopes', {
     async: true
   }),
   lowValue: attr('boolean'),
 });
-
-export default plan;
