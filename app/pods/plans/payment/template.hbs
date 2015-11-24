@@ -25,11 +25,26 @@
     <div class="spacing-bottom-4 text-center">
       <h2>Complete your payment!</h2>
     </div>
+    <ul>
+    {{#each model.cards as |card|}}
+      <li>{{#radio-button
+        value=card.id
+        groupValue=cardGroup
+        changed="cardChanged"}}
+        xxxx-xxxx-xxxx-{{card.last4}} <i class="fa fa-cc-{{card.logo}}"></i> - {{card.exp_month}}/{{card.exp_year}}
+        {{#if card.default}}
+          <strong>default</strong>
+        {{/if}}
+      {{/radio-button}}</li>
+    {{/each}}
+    <li>{{#radio-button
+      value="newCard"
+      groupValue=cardGroup
+      changed="cardChanged"}}
+      Use new card
+    {{/radio-button}}</li>
+  </ul>
     <div class="scope-content">
-      {{#each model.cards as |card|}}
-        {{log card}}
-        
-      {{/each}}
       {{stripe-checkout
         class="btn btn-primary"
         image="/logo.svg"
@@ -44,14 +59,7 @@
       }}
       <div class="alertbox form-group"></div>
       <span class="payment-errors"></span>
-      <div class="alert alert-info text-small">
-        <div class="checkbox spacing0">
-          <label>
-            {{view Ember.Checkbox checkedBinding="terms"}}
-            I have read and accept the <a class="alert-link" href="" target="_blank">privacy statement</a>.
-          </label>
-        </div>
-      </div>
+      <div class="alert alert-info text-small"></div>
     </div>
   </div>
 </div>
