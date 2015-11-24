@@ -1,18 +1,17 @@
 import Ember from 'ember';
-// import Config from 'authmaker-scopes-app/config/environment';
 
 export default Ember.Controller.extend({
   payButtonDisabled: true,
 
   actions: {
-    cardChanged: function(card){
-      if(card === 'newCard') {
+    cardChanged: function(card) {
+      if (card === 'newCard') {
         return this.set('payButtonDisabled', false);
       }
       return this.set('payButtonDisabled', true);
     },
 
-    processStripeToken: function(token){
+    processStripeToken: function(token) {
       return Ember.$.ajax({
         method: 'POST',
         dataType: 'json',
