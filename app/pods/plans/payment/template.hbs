@@ -30,10 +30,11 @@
         class="btn btn-primary"
         image="/logo.svg"
         name="AuthMaker"
-        description="{{model.stripePlan.name}}"
-        amount="{{model.stripePlan.amount}}"
+        description=model.stripePlan.name
+        amount=model.stripePlan.amount
+        currency=model.stripePlan.currency
         label="Subscribe now"
-        panelLabel="Subscribe for {{model.stripePlan.amount}}/mo"
+        panelLabel="Subscribe & Pay"
         isDisabled=payButtonDisabled
         action="processStripeToken"
       }}
