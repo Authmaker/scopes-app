@@ -23,40 +23,46 @@
   </div>
   <div class="pad4">
     <div class="spacing-bottom-4 text-center">
-      <h2>Complete your payment!</h2>
+      <h2>Choose payment method and complete your payment!</h2>
     </div>
     <ul>
-    {{#each model.cards as |card|}}
-      <li>{{#radio-button
-        value=card.id
-        groupValue=cardGroup
-        changed="cardChanged"}}
-        xxxx-xxxx-xxxx-{{card.last4}} <i class="fa fa-cc-{{card.logo}}"></i> - {{card.exp_month}}/{{card.exp_year}}
-        {{#if card.default}}
-          <strong>default</strong>
-        {{/if}}
-      {{/radio-button}}</li>
-    {{/each}}
-    <li>{{#radio-button
-      value="newCard"
-      groupValue=cardGroup
-      changed="cardChanged"}}
-      Use new card
-    {{/radio-button}}</li>
-  </ul>
+      {{#if showPaymentChoices}}
+        {{#each model.cards as |card|}}
+          <li>
+            {{#radio-button
+            value=card.id
+            groupValue=chosenCard}}
+            card ending - {{card.last4}} <i class="fa fa-cc-{{card.logo}}"></i> - {{card.exp_month}}/{{card.exp_year}}
+            {{#if card.default}}
+              <strong>default</strong>
+            {{/if}}
+          {{/radio-button}}</li>
+        {{/each}}
+        <li>{{#radio-button
+          value="newCard"
+          groupValue=chosenCard}}
+          Pay with new card using stripe
+        {{/radio-button}}</li>
+      {{else}}
+        Pay for {{model.plan.name}} with stripe
+      {{/if}}
+    </ul>
     <div class="scope-content">
-      {{stripe-checkout
-        class="btn btn-primary"
-        image="/logo.svg"
-        name="AuthMaker"
-        description=model.plan.stripePlan.name
-        amount=model.plan.stripePlan.amount
-        currency=model.plan.stripePlan.currency
-        label="Pay with new card"
-        panelLabel="Make payment"
-        isDisabled=payButtonDisabled
-        action="processStripeToken"
-      }}
+      {{#if (eq chosenCard 'newCard')}}
+        {{stripe-checkout
+          class="btn green"
+          image="/logo.svg"
+          name="AuthMaker"
+          description=model.plan.stripePlan.name
+          amount=model.plan.stripePlan.amount
+          currency=model.plan.stripePlan.currency
+          label="Pay for plan with stripe"
+          panelLabel="Make payment"
+          action="processStripeToken"
+        }}
+      {{else}}
+        <button class="btn green" {{action "payForPlan" chosenCard}}>Pay for plan with existing card</button>
+      {{/if}}
       <div class="alertbox form-group"></div>
       <span class="payment-errors"></span>
       <div class="alert alert-info text-small"></div>

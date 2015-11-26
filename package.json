@@ -41,6 +41,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-radio-button": "1.0.7",
+    "ember-truth-helpers": "1.2.0",
     "ember-watson": "^0.7.0",
     "uiframework": "git+ssh://git@github.com:Blooie/uiframework.git"
   }
