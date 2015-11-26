@@ -41,10 +41,10 @@
         <li>{{#radio-button
           value="newCard"
           groupValue=chosenCard}}
-          Pay with new card using stripe
+          Add new default card
         {{/radio-button}}</li>
       {{else}}
-        Pay for {{model.plan.name}} with stripe
+        Pay for {{model.plan.name}} subscription by adding a new default card
       {{/if}}
     </ul>
     <div class="scope-content">
@@ -56,7 +56,7 @@
           description=model.plan.stripePlan.name
           amount=model.plan.stripePlan.amount
           currency=model.plan.stripePlan.currency
-          label="Pay for plan with stripe"
+          label="Add a new default card & pay"
           panelLabel="Make payment"
           action="processStripeToken"
         }}
