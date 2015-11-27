@@ -35,7 +35,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.stripe = {
-      key: "pk_test_exPzFBOf8i8Prmo5ZdB9QKUy"
     };
   }
 

@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  application: Ember.inject.controller(),
+
+  applicationName: Ember.computed('application.model.appName', function(){
+    return this.get('application.model.appName') || "AuthMaker";
+  }),
+
   showPaymentChoices: Ember.computed('model.cards.[]', function(){
     if(Ember.isEmpty(this.get('model.cards'))) {
       this.set('showStripeButton', true);
