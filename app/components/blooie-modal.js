@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 
   hasBeenInserted: false,
 
-  onDidInsertElement: function() {
+  onDidInsertElement: Ember.on('didInsertElement', function() {
     // Make sure <body> can't scroll
     Ember.$('body').addClass('modal-open');
 
@@ -12,7 +12,7 @@ export default Ember.Component.extend({
       this.set('hasBeenInserted', true);
     }.bind(this), 1);
 
-  }.on('didInsertElement'),
+  }),
 
   transitionEnd: function() {
     if (!this.get('hasBeenInserted')) {

@@ -11,10 +11,14 @@
 @import "mixins";
 @import "components";
 @import "scaffolding";
+@import "helpers";
 
 
 // App partials
 // -------------------------
 
 // Import OAuth specific rules
-@import "oauth";
+@import "authmaker/footer";
+@import "authmaker/header";
+@import "authmaker/password";
+@import "authmaker/social";

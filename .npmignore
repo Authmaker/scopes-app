@@ -1,0 +1,12 @@
+app/
+bower_components/
+config/
+node_modules/
+public/
+tests/
+vendor/
+tmp/
+bower.json
+testem.json
+Brocfile.js
+ember-cli-build.js

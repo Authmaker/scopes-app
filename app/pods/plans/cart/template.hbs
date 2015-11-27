@@ -7,12 +7,6 @@
           <h4 class="spacing-bottom0">Plans</h4>
         {{/link-to}}
       </li>
-      <li class="complete">
-        {{#link-to "auth"}}
-          <i class="fa fa-check fa-2x"></i>
-          <h4 class="spacing-bottom0">Auth</h4>
-        {{/link-to}}
-      </li>
       <li class="active">
         <span>
           <i class="fa fa-shopping-cart fa-2x"></i>
@@ -41,10 +35,10 @@
           </tr>
         </thead>
         <tbody>
-          {{#each content.permissions}}
+          {{#each model.scopes as |scope|}}
           <tr>
-            <td><h4><strong>{{name}}</strong></h4></td>
-            <td><h4>{{description}}</h4></td>
+            <td><h4><strong>{{scope.name}}</strong></h4></td>
+            <td><h4>{{scope.description}}</h4></td>
           </tr>
           {{/each}}
         </tbody>
@@ -52,30 +46,12 @@
       <div class="scope-pricing">
         <div class="row">
           <div class="scope-coupon col-sm-4 spacing-bottom4">
-            <div class="form-group">
-              <label>Coupon code</label>
-              <div class="input-group">
-                {{input class="form-control small" value=couponCode action="applyCode"}}
-                <span class="input-group-btn">
-                  <button class="btn blue small" {{action applyCode}}>Apply</button>
-                </span>
-              </div>
-            </div>
-            <div class="alertbox"></div>
+
           </div>
           <div class="scope-total col-sm-6 col-sm-offset-2">
             <p><strong>Price</strong></p>
-            <div {{bind-attr class="hasReducedPrice:scope-reducedprice:hidden"}}>
-              {{#if hasReducedPrice}}
-              {{!-- <p class="alert alert-info">For <strong>{{ reducedDuration }}</strong> your payment will be: <strong>${{ formattedPrice reducedPrice}}</strong></p> --}}
-              {{else}}
-              <p class="alert alert-info">For <strong>{{reducedDuration}}</strong> you will have <strong>free access</strong></p>
-              {{/if}}
-            </div>
             <div class="scope-regularprice">
-              <p {{bind-attr class="hasReducedPrice:shown:hidden"}}>After that it will be:</p>
-              {{!-- <h3>${{formattedPrice content.price}}</h3> --}}
-              {{!-- <small>{{formattedTimePeriod content.interval}}</small> --}}
+              <h3><i class="fa fa-{{model.stripePlan.currency}}"></i>{{model.stripePlan.computedAmount}}</h3>
             </div>
           </div>
         </div>
@@ -85,7 +61,7 @@
   <div class="frame-footer">
     <div class="row">
       <div class="col-sm-4 col-sm-offset-8">
-        <button class="btn green block" {{action 'payForPlan'}}>Confirm</button>
+        <button class="btn green block" {{action 'transitionTo' 'plans.payment' model.id}}>Confirm</button>
       </div>
     </div>
   </div>

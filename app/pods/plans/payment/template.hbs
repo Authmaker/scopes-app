@@ -1,0 +1,72 @@
+<div class="frame">
+  <div class="oauth-scopes-nav">
+    <ul class="nav-tabs nav-justified text-center">
+      <li class="complete">
+        {{#link-to "plans"}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Plans</h4>
+        {{/link-to}}
+      </li>
+      <li class="complete">
+        {{#link-to "plans.cart" model.plan}}
+          <i class="fa fa-check fa-2x"></i>
+          <h4 class="spacing-bottom0">Cart</h4>
+        {{/link-to}}
+      </li>
+      <li class="active">
+        <span>
+          <i class="fa fa-credit-card fa-2x"></i>
+          <h4 class="spacing-bottom0">Payment</h4>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="pad4">
+    <div class="spacing-bottom-4 text-center">
+      <h2>Choose payment method and complete your payment!</h2>
+    </div>
+    <ul>
+      {{#if showPaymentChoices}}
+        {{#each model.cards as |card|}}
+          <li>
+            {{#radio-button
+            value=card.id
+            groupValue=chosenCard}}
+            card ending - {{card.last4}} <i class="fa fa-cc-{{card.logo}}"></i> - {{card.exp_month}}/{{card.exp_year}}
+            {{#if card.default}}
+              <strong>default</strong>
+            {{/if}}
+          {{/radio-button}}</li>
+        {{/each}}
+        <li>{{#radio-button
+          value="newCard"
+          groupValue=chosenCard}}
+          Add new default card
+        {{/radio-button}}</li>
+      {{else}}
+        Pay for {{model.plan.name}} subscription by adding a new default card
+      {{/if}}
+    </ul>
+    <div class="scope-content">
+      {{#if (eq chosenCard 'newCard')}}
+        {{stripe-checkout
+          key=application.model.stripeKey
+          class="btn green"
+          image="/logo.svg"
+          name=applicationName
+          description=model.plan.name
+          amount=model.plan.stripePlan.amount
+          currency=model.plan.stripePlan.currency
+          label="Add a new default card & pay"
+          panelLabel="Make payment"
+          action="processStripeToken"
+        }}
+      {{else}}
+        <button class="btn green" {{action "payForPlan" chosenCard}}>Pay for plan with existing card</button>
+      {{/if}}
+      <div class="alertbox form-group"></div>
+      <span class="payment-errors"></span>
+      <div class="alert alert-info text-small"></div>
+    </div>
+  </div>
+</div>

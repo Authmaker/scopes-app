@@ -1,16 +1,10 @@
 <div class="frame">
   <div class="oauth-scopes-nav">
     <ul class="nav-tabs nav-justified text-center">
-      <li class="complete">
-        {{#link-to "plans"}}
-          <i class="fa fa-check fa-2x"></i>
-          <h4 class="spacing-bottom0">Plans</h4>
-        {{/link-to}}
-      </li>
       <li class="active">
         <span>
-          <i class="fa fa-lock fa-2x"></i>
-          <h4 class="spacing-bottom0">Auth</h4>
+          <i class="fa fa-list fa-2x"></i>
+          <h4 class="spacing-bottom0">Plans</h4>
         </span>
       </li>
       <li>
@@ -29,33 +23,36 @@
   </div>
   <div class="pad4">
     <div class="spacing-bottom4 text-center">
-      <h2>Allow {{oauthClient.name}} access</h2>
-      <p>{{oauthClient.name}} would like access to the following features of your Blooie account:</p>
+      <h2>Select your plan</h2>
+      <p>Please select a plan to subscribe to.</p>
     </div>
     <div class="scope-content">
       <table class="table">
         <thead>
           <tr>
-            <th>Permission</th>
-            <th>Description</th>
+            <th>Plan Name</th>
+            <th>Plan Price</th>
+            <th>Plan Scopes</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {{#each content.permissions}}
+          {{#each model as |plan|}}
           <tr>
-            <td><h4>{{name}}</h4></td>
-            <td><h4>{{description}}</h4></td>
+            <td><h4>{{plan.name}}</h4></td>
+            <td><h4><i class="fa fa-{{plan.stripePlan.currency}}"></i>{{plan.stripePlan.computedAmount}}</h4></td>
+            <td>
+              <ul>
+                {{#each plan.scopes as |scope|}}
+                <li><h4>{{scope.name}}</h4></li>
+                {{/each}}
+              </ul>
+            </td>
+            <td>{{#link-to "plans.cart" plan class="btn green small"}}Select{{/link-to}}</td>
           </tr>
           {{/each}}
         </tbody>
       </table>
-    </div>
-  </div>
-  <div class="frame-footer">
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-8">
-        <button class="btn green block" {{action 'acceptPermissions'}}>Allow</button>
-      </div>
     </div>
   </div>
 </div>

@@ -1,15 +1,16 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-var Router = Ember.Router.extend({
+const Router = Ember.Router.extend({
   location: config.locationType
 });
 
 Router.map(function() {
-    this.route('auth');
-    this.route('cart');
-    this.route('payment');
-    this.route('plans');
+    this.route('authorize');
+    this.route('plans', function(){
+      this.route('cart', {path: ':id'});
+      this.route('payment', {path: 'pay/:id'});
+    });
 });
 
 export default Router;
