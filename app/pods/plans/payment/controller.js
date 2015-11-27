@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
           token: token,
         },
       }).then(() => {
-
+        window.location.reload();
       }).then(null, (err) => {
         console.log(err);
       });
@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
           token: token.id,
         },
       }).then(() => {
-
+        window.location.reload();
       }).then(null, (err) => {
         console.log(err);
       });
