@@ -44,7 +44,13 @@
             <td>
               <ul>
                 {{#each plan.scopes as |scope|}}
-                <li><h4>{{scope.name}}</h4></li>
+                  {{#if (not application.model.paidForOnly)}}
+                    <li><h4>{{scope.name}}</h4></li>
+                  {{else}}
+                    {{#if scope.paidFor}}
+                      <li><h4>{{scope.name}}</h4></li>
+                    {{/if}}
+                  {{/if}}
                 {{/each}}
               </ul>
             </td>
