@@ -36,9 +36,17 @@
         </thead>
         <tbody>
           {{#each model.scopes as |scope|}}
-          <tr>
+          {{#if (not application.model.paidForOnly)}}
             <td><h4><strong>{{scope.name}}</strong></h4></td>
             <td><h4>{{scope.description}}</h4></td>
+          {{else}}
+            {{#if scope.paidFor}}
+              <td><h4><strong>{{scope.name}}</strong></h4></td>
+              <td><h4>{{scope.description}}</h4></td>
+            {{/if}}
+          {{/if}}
+          <tr>
+
           </tr>
           {{/each}}
         </tbody>
