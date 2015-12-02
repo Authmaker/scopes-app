@@ -1,6 +1,6 @@
 {
   "name": "authmaker-scopes-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scopes app for authmaker",
   "directories": {
     "doc": "doc",
