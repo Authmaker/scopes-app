@@ -9,56 +9,21 @@
       </li>
       <li>
         <span>
-          <i class="fa fa-shopping-cart fa-2x"></i>
-          <h4 class="spacing-bottom0">Cart</h4>
-        </span>
-      </li>
-      <li>
-        <span>
           <i class="fa fa-credit-card fa-2x"></i>
           <h4 class="spacing-bottom0">Payment</h4>
         </span>
       </li>
     </ul>
   </div>
-  <div class="pad4">
-    <div class="spacing-bottom4 text-center">
-      <h2>Select your plan</h2>
-      <p>Please select a plan to subscribe to.</p>
-    </div>
-    <div class="scope-content">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Plan Name</th>
-            <th>Plan Price</th>
-            <th>Plan Scopes</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each model as |plan|}}
-          <tr>
-            <td><h4>{{plan.name}}</h4></td>
-            <td><h4><i class="fa fa-{{plan.stripePlan.currency}}"></i>{{plan.stripePlan.computedAmount}}</h4></td>
-            <td>
-              <ul>
-                {{#each plan.scopes as |scope|}}
-                  {{#if (not application.model.paidForOnly)}}
-                    <li><h4>{{scope.name}}</h4></li>
-                  {{else}}
-                    {{#if scope.paidFor}}
-                      <li><h4>{{scope.name}}</h4></li>
-                    {{/if}}
-                  {{/if}}
-                {{/each}}
-              </ul>
-            </td>
-            <td>{{#link-to "plans.cart" plan class="btn green small"}}Select{{/link-to}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+  <div class="text-center">
+    <h2>Select your plan</h2>
+    <p>Please select a plan to subscribe to.</p>
+  </div>
+  <div class="scope-content row flex flex-wrap pad4">
+    {{#each model as |plan|}}
+      <div class="col-xs-12 col-sm-6 flex spacing-bottom2">
+        {{plan-item plan=plan showPaidOnly=application.model.showPaidOnly}}
+      </div>
+    {{/each}}
   </div>
 </div>
