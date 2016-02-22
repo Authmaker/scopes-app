@@ -22,3 +22,27 @@
 @import "authmaker/header";
 @import "authmaker/password";
 @import "authmaker/social";
+
+.margin0 {
+  margin:0;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-grow {
+  flex: 1 0 auto;
+}
+
+.flex-column {
+  flex-direction: column;
+}

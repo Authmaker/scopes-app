@@ -1,0 +1,25 @@
+<div class="text-center border-bottom">
+  <h3>
+    {{plan.name}}
+    {{#if plan.stripePlan.computedAmount}}
+      - <i class="fa fa-{{plan.stripePlan.currency}}"></i>{{plan.stripePlan.computedAmount}}
+    {{/if}}
+  </h3>
+</div>
+<hr class="margin0">
+<div class="pad2 flex flex-column flex-auto">
+  <div class="flex-grow flex flex-column">
+    <h3 class="margin0">Features:</h3>
+    <ul class="list-unstyled">
+      {{#each scopes as |scope|}}
+        <li>
+          <h4>{{scope.name}}</h4>
+          <ul>
+            <li>{{scope.description}}</li>
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{#link-to "plans.payment" plan.id class="btn green block"}}Select{{/link-to}}
+</div>
