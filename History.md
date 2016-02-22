@@ -1,4 +1,10 @@
 
+1.1.0 / 2016-02-22
+==================
+
+  * Merge pull request #3 from stonecircle/feature/simplifyPayment
+  * simplifying the payment path
+
 1.0.1 / 2015-12-02
 ==================
 
