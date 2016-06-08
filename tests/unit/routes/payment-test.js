@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:payment', 'PaymentRoute', {
+moduleFor('route:plans/payment', 'PaymentRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

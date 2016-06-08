@@ -6,20 +6,15 @@ moduleForComponent('plan-item', 'Integration | Component | plan item', {
 });
 
 test('it renders', function(assert) {
-  
+
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.render(hbs`{{plan-item}}`);
+  this.set('plan', {
+    scopes: []
+  });
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{plan-item plan=plan}}`);
 
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#plan-item}}
-      template block text
-    {{/plan-item}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim().substring(0, 8), 'Features');
 });

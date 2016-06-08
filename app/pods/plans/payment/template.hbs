@@ -62,5 +62,11 @@
       <span class="payment-errors"></span>
       <div class="alert alert-info text-small"></div>
     </div>
+    {{#if model.plan.stripePlan.trial_period_days}}
+      <div class="text-center">
+        <p>Your first payment will be charged ​<strong>at the end of the {{model.plan.stripePlan.trial_period_days}} day free trial period</strong>.</p>
+        <p>If you decide not to continue with your subscription ​<strong>you must cancel before the {{model.plan.stripePlan.trial_period_days}} days are completed</strong>.</p>
+      </div>
+    {{/if}}
   </div>
 </div>
