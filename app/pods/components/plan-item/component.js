@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
 
   classNames: ['frame', 'flex-auto', 'flex', 'flex-column'], 
 
-  scopes: Ember.computed('plan.scopes.@each.paidFor', function(){
+  scopes: computed('plan.scopes.@each.paidFor', function(){
     return this.get('plan.scopes').filter((scope) => {
-      if(this.get('showPaidOnly')){
+      if(this.showPaidOnly){
         return scope.get('paidFor');
       }
       return true; // default show all
