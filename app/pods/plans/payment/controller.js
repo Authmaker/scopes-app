@@ -1,30 +1,33 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { isEmpty } from '@ember/utils';
+import { computed } from '@ember/object';
+import Controller, { inject as controller } from '@ember/controller';
 
-export default Ember.Controller.extend({
-  application: Ember.inject.controller(),
+export default Controller.extend({
+  application: controller(),
 
-  applicationName: Ember.computed('application.model.appName', function(){
+  applicationName: computed('application.model.appName', function(){
     return this.get('application.model.appName') || "AuthMaker";
   }),
 
-  showPaymentChoices: Ember.computed('model.cards.[]', function(){
-    if(Ember.isEmpty(this.get('model.cards'))) {
+  showPaymentChoices: computed('model.cards.[]', function(){
+    if(isEmpty(this.get('model.cards'))) {
       this.set('showStripeButton', true);
       return false;
     }
     return true;
   }),
 
-  chosenCard: Ember.computed('model.cards.[]', function(){
+  chosenCard: computed('model.cards.[]', function(){
     return this.get('model.cards.firstObject.id') || 'newCard';
   }),
 
   actions: {
     payForPlan: function(token) {
-      return Ember.$.ajax({
+      return $.ajax({
         method: 'POST',
         dataType: 'json',
-        url: `/api/stripePlans/subscribe`,
+        url: `/v1/stripe-plans/subscribe`,
         data: {
           stripePlanId: this.get('model.plan.stripePlan.id'),
           internalPlanId: this.get('model.plan.id'),
@@ -37,7 +40,7 @@ export default Ember.Controller.extend({
       });
     },
     processStripeToken: function(token) {
-      return Ember.$.ajax({
+      return $.ajax({
         method: 'POST',
         dataType: 'json',
         url: `/api/stripePlans/subscribe`,

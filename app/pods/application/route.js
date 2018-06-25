@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   model: function(){
-    return Ember.$.getJSON('/settings/scopes');
+    return $.getJSON('/settings/scopes');
   },
 
   actions: {

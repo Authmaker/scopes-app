@@ -7,7 +7,7 @@ export default DS.Model.extend({
   stripePlan: DS.belongsTo('stripe-plan', {
     async: true
   }),
-  scopes: DS.hasMany('scopes', {
+  permissions: DS.hasMany('permission', {
     async: true
   }),
   lowValue: attr('boolean'),

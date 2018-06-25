@@ -1,20 +1,22 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('plan-item', 'Integration | Component | plan item', {
-  integration: true
-});
+module('Integration | Component | plan item', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.set('plan', {
-    scopes: []
+    this.set('plan', {
+      scopes: []
+    });
+
+    await render(hbs`{{plan-item plan=plan}}`);
+
+    assert.equal(find('*').textContent.trim().substring(0, 8), 'Features');
   });
-
-  this.render(hbs`{{plan-item plan=plan}}`);
-
-  assert.equal(this.$().text().trim().substring(0, 8), 'Features');
 });
