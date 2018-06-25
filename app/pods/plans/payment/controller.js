@@ -27,7 +27,7 @@ export default Controller.extend({
       return $.ajax({
         method: 'POST',
         dataType: 'json',
-        url: `/api/stripePlans/subscribe`,
+        url: `/v1/stripe-plans/subscribe`,
         data: {
           stripePlanId: this.get('model.plan.stripePlan.id'),
           internalPlanId: this.get('model.plan.id'),
