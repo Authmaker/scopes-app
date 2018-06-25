@@ -22,38 +22,30 @@ export default Controller.extend({
     return this.get('model.cards.firstObject.id') || 'newCard';
   }),
 
+  processPayment(token) {
+    return $.ajax({
+      method: 'POST',
+      dataType: 'json',
+      url: `/v1/stripe-plans/subscribe`,
+      data: {
+        stripePlanId: this.get('model.plan.stripePlan.id'),
+        internalPlanId: this.get('model.plan.id'),
+        token,
+      },
+    }).then(() => {
+      window.location.reload();
+    }).then(null, (err) => {
+      console.log(err);
+    });
+  },
+
   actions: {
     payForPlan: function(token) {
-      return $.ajax({
-        method: 'POST',
-        dataType: 'json',
-        url: `/v1/stripe-plans/subscribe`,
-        data: {
-          stripePlanId: this.get('model.plan.stripePlan.id'),
-          internalPlanId: this.get('model.plan.id'),
-          token: token,
-        },
-      }).then(() => {
-        window.location.reload();
-      }).then(null, (err) => {
-        console.log(err);
-      });
+      this.processPayment(token);
     },
+
     processStripeToken: function(token) {
-      return $.ajax({
-        method: 'POST',
-        dataType: 'json',
-        url: `/api/stripePlans/subscribe`,
-        data: {
-          stripePlanId: this.get('model.plan.stripePlan.id'),
-          internalPlanId: this.get('model.plan.id'),
-          token: token.id,
-        },
-      }).then(() => {
-        window.location.reload();
-      }).then(null, (err) => {
-        console.log(err);
-      });
+      this.processPayment(token.id);
     }
   }
 
