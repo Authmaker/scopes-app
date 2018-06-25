@@ -23,13 +23,7 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    contentSecurityPolicy: {
-      'default-src': "'none'",
-      'img-src': "'self' use.typekit.net data: ",
-      'connect-src': "'self' maps.gstatic.com ws://*:49155  http://*:49155",
-      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' use.typekit.net",
-      'style-src': "'self' 'unsafe-inline' use.typekit.net"
-    },
+    stripe: {},
   };
 
   if (environment === 'development') {
@@ -38,8 +32,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.stripe = {
-    };
   }
 
   if (environment === 'test') {
