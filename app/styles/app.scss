@@ -46,3 +46,21 @@
 .flex-column {
   flex-direction: column;
 }
+
+.sk-cube-grid {
+  height: 80px;
+  width: 80px;
+  .sk-cube {
+    background-color: $primary-blue;
+  }
+}
+
+.sk-three-bounce .sk-child {
+  background-color: $primary-blue;
+}
+
+.payment-status {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

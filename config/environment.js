@@ -24,6 +24,10 @@ module.exports = function(environment) {
     },
 
     stripe: {},
+
+    'ember-cli-notifications': {
+      includeFontAwesome: true
+    }
   };
 
   if (environment === 'development') {
