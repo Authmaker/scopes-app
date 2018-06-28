@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 12px;
+        font-family: Lato-Bold, Lato;
+        font-weight: 700;
+      }
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 12px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>LogoOnly</title>
+  <g id="Layer_5" data-name="Layer 5">
+    <g id="Layer_3" data-name="Layer 3"><path d="M125.58,94.59a7.93,7.93,0,0,0-7.93,7.93v5.12h15.87s0-3.54,0-5.12A7.93,7.93,0,0,0,125.58,94.59Z"/><path
+      d="M193.45,174.28,133.54,46.54s-2.24-6.31-8.08-6.31-8.07,6.31-8.07,6.31L57.47,174.28s-4.28,9,7.38,14.55,15.94-3.47,15.94-3.47l18.52-39h52.3l18.53,39s4.28,9,15.94,3.47S193.45,174.28,193.45,174.28Zm-83.18-45.72-.06-21v-5.12a15.4,15.4,0,1,1,30.8,0v5.12l.06,21Z"/>
+      <text class="cls-1" transform="translate(220.43 239.74)">TM</text>
+    </g>
+  </g>
+  <g id="Layer_4" data-name="Layer 4"><path class="cls-2" d="M201.15,50.38Q232.5,81.73,232.5,126t-31.35,75.66Q169.8,233,125.5,233T49.9,201.63Q18.55,170.27,18.55,126T49.9,50.38Q81.25,19,125.5,19T201.15,50.38Z"/></g>
+</svg>

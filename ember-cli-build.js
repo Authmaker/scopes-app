@@ -1,6 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const defaultFingerprintExtensions = require('broccoli-asset-rev/lib/default-options').extensions;
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -9,9 +10,9 @@ module.exports = function(defaults) {
       browsers: ['last 2 versions', 'ie >= 8', 'bb 10', 'android 3'],
       cascade: true
     },
-    pixrem: {
-      rootvalue: "10px"
-    }
+    fingerprint: {
+      extensions: defaultFingerprintExtensions.concat(["svg"]),
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
